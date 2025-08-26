@@ -1,8 +1,6 @@
 import React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
-// import { Cross2Icon } from '@radix-ui/react-icons';
-import { CrossIcon, X } from 'lucide-react';
-
+import { Cross2Icon } from '@radix-ui/react-icons';
 import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -24,7 +22,7 @@ const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => (
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  'fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in overflow-y-scroll data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 rounded-top-md',
+  'fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
   {
     variants: {
       side: {
@@ -40,7 +38,6 @@ const sheetVariants = cva(
   }
 );
 
-// Persistent Sheet Content component that won't close on overlay click
 const SheetContent = React.forwardRef(
   ({ side = 'right', className, children, title, description, hideTitle = false, ...props }, ref) => (
     <SheetPortal>
@@ -49,14 +46,6 @@ const SheetContent = React.forwardRef(
         ref={ref}
         className={cn(sheetVariants({ side }), className)}
         aria-describedby={description ? 'sheet-description' : undefined}
-        onPointerDownOutside={(e) => {
-          // Prevent closing when clicking outside
-          e.preventDefault();
-        }}
-        onEscapeKeyDown={(e) => {
-          // Optionally prevent closing on Escape key
-          e.preventDefault();
-        }}
         {...props}
       >
         {hideTitle ? (
@@ -69,7 +58,7 @@ const SheetContent = React.forwardRef(
         {description && <SheetDescription id="sheet-description">{description}</SheetDescription>}
         {children}
         <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
-          <X className="h-6 w-6 text-red-500 cursor-pointer " />
+          <Cross2Icon className="h-4 w-4" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>

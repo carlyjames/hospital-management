@@ -5,8 +5,10 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
-// images
-// import login1 from '../../public/login-1.png'
+// icons
+import appleIcon from '../../assets/images/apple.png'
+import facebookIcon from '../../assets/images/icons8-facebook.png'
+import googleIcon from '../../assets/images/icons8-google.png'
 
 const page = () => {
   return (
@@ -43,9 +45,9 @@ const page = () => {
             <div className='h-[1px] w-[80%] bg-gray-300'></div>
         </div>
         <div className='flex flex-col gap-2'>
-            <Button className='flex items-center justify-around cursor-pointer bg-white border border-gray-200 text-gray-500 hover:bg-gray-100 w-full'>Sign up with Google</Button>
-            <Button className='flex items-center justify-around cursor-pointer bg-white border border-gray-200 text-gray-500 hover:bg-gray-100 w-full'>Sign up with Facebook</Button>
-            <Button className='flex items-center justify-around cursor-pointer bg-white border border-gray-200 text-gray-500 hover:bg-gray-100 w-full'>Sign up with Apple</Button>
+            <Button className='flex items-center justify-center gap-4 cursor-pointer bg-white border border-gray-200 text-gray-500 hover:bg-gray-100 w-full'> <Image src={googleIcon} alt='google icon' height={100} width={100} className='h-4 w-4 object-contain' /> <p> Sign up with Google</p> </Button>
+            <Button className='flex items-center justify-center gap-4 cursor-pointer bg-white border border-gray-200 text-gray-500 hover:bg-gray-100 w-full'> <Image src={facebookIcon} alt='google icon' height={100} width={100} className='h-4 w-4 object-contain' /> Sign up with Facebook</Button>
+            <Button className='flex items-center justify-center gap-4 cursor-pointer bg-white border border-gray-200 text-gray-500 hover:bg-gray-100 w-full'> <Image src={appleIcon} alt='google icon' height={100} width={100} className='h-4 w-4 object-contain' />  Sign up with Apple</Button>
         </div>
         <h1 className='text-[#2563EB] text-sm self-center'>Already have an account? <Link href='/Login' className='underline'>LOGIN HERE</Link> </h1>
       </div>
